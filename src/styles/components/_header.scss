@@ -1,13 +1,15 @@
 .header {
   nav {
-    font-size: 2.8rem;
     background-color: $color-2;
     color: $white;
+    height: 70px;
 
     .searchContainer {
       display: flex;
       justify-content: space-between;
-      padding: 0 20px;
+      padding: 0 50px;
+      align-items: center;
+      height: 100%;
 
       .title {
         flex: 1;
@@ -22,17 +24,19 @@
         flex: 4;
         display: flex;
         justify-content: space-between;
+        align-items: center;
 
         .searchInput {
           width: 65vw;
           background-color: transparent;
-          color: $white;
+          color: #fff;
           border: none;
-          font-size: 1.8rem;
+          font-size: 18px;
+          height: 100%;
+          padding-left: 3px;
 
           &::placeholder {
-            color: $gray;
-            font-size: 1.8rem;
+            color: #c1e1fa;
           }
 
           &:focus {
@@ -60,17 +64,26 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding-left: 30px;
+          padding: 0 20px;
+          position: relative;
+          height: 50px;
         }
 
         .navbarIntern {
-          font-size: 1.5rem;
+          font-size: 16px;
           display: flex;
           padding: 0 25px;
           justify-content: space-between;
 
+          .navbar-dropdown {
+            position: relative;
+          }
+
           .navbar-dropdown:hover .dropdown-content {
             display: block;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+            font-size: 12px;
           }
 
           .navbar-dropdown .dropdown-content {
@@ -79,20 +92,52 @@
             background-color: white;
             min-width: 160px;
             z-index: 1;
+            top: 100%;
+            left: 16px;
+            width: auto;
+            border: 0;
+            box-shadow: none;
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+
+            &::before {
+              content: "";
+              display: block;
+              z-index: 1;
+              position: absolute;
+              top: 0;
+              left: 10px;
+              width: 0;
+              height: 0;
+              border-right: 12px solid transparent;
+              border-bottom: 12px solid #fff;
+              border-left: 12px solid transparent;
+              transform: translateY(-100%);
+            }
 
             a {
-              color: $black;
-              font-size: 1rem;
+              color: #212930;
+              font-size: 12px;
+              font-weight: 700;
+              white-space: nowrap;
               display: flex;
               flex-direction: column;
-              border: 0.2px solid $black;
               text-align: left;
-              padding-left: 5px;
+              padding: 7px 10px;
+              border-bottom: 1px solid #e8e4e4;
             }
+
+            .navDropdown {
+              color: $color-2;
+            }
+          }
+
+          .navbar-dropdown .dropdown-content:last-child {
+            border-bottom: none;
           }
         }
 
-        a.nav-inactive {
+        a.nav {
           color: $color-3;
 
           &:hover {
@@ -117,7 +162,7 @@
           text-decoration: none;
           color: $white;
           padding-right: 25px;
-          font-size: 1.5rem;
+          font-size: 15px;
         }
 
         .searchIcon {
@@ -136,7 +181,7 @@
       display: none;
     }
     nav {
-      font-size: 1.8rem;
+      font-size: 15px;
 
       .navbar {
         padding: 0;
@@ -153,11 +198,15 @@
 @media screen and (min-width: 765px) {
   .header {
     nav {
-      font-size: 2.5rem;
+      font-size: 18px;
     }
     .title {
       display: initial;
-      padding-left: 25px;
+      padding: 10px 0 10px 25px;
+
+      a li {
+        font-size: 25px;
+      }
     }
   }
 }

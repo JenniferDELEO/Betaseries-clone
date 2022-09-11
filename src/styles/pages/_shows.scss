@@ -1,2 +1,342 @@
 .shows {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  width: 85%;
+  margin-top: 20px;
+  font-size: 12px;
+
+  .searchFilter {
+    flex: 1;
+    padding: 0 15px;
+
+    .searchInput {
+      display: flex;
+      padding: 0 5px;
+      align-items: center;
+      background-color: #ffffff;
+      margin-top: 5px;
+      margin-left: 6px;
+      width: 100%;
+
+      input {
+        width: 100%;
+        font-size: 11px;
+        padding: 5px 5px;
+        padding-left: 10px;
+        border: none;
+        vertical-align: middle;
+
+        &::placeholder {
+          vertical-align: middle;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .selectContainer {
+      position: relative;
+      background: #ffffff;
+      width: 100%;
+      border: none;
+      text-align: left;
+      display: block;
+      margin: 15px 6px;
+
+      .reinitiate {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 40px;
+        border: 0.2px solid transparent;
+        background-color: transparent;
+        cursor: pointer;
+        font-size: 12px;
+
+        span {
+          width: 100%;
+        }
+      }
+
+      .selectTitle {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        height: 40px;
+        cursor: pointer;
+        font-weight: 500;
+        color: black;
+        font-size: 12px;
+
+        .filterNumber {
+          background-color: #3b8dd0;
+          color: #ffffff;
+          margin-right: 3px;
+          padding: 4px 8px;
+          border-radius: 10px;
+          font-size: 10px;
+        }
+
+        .filterNumberOpen {
+          background-color: #ffffff;
+          color: #3b8dd0;
+        }
+      }
+
+      svg {
+        padding-left: 10px;
+        color: $color-2;
+        width: 45px;
+        padding-right: 10px;
+      }
+
+      span {
+        vertical-align: top;
+        width: 70%;
+        margin-left: 10px;
+      }
+
+      .menu {
+        position: absolute;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .menu-actif {
+        background: #fafafa;
+        opacity: 1;
+        visibility: visible;
+        padding: 5px 0;
+
+        button {
+          text-decoration: none;
+          text-align: center;
+          border: 0.2px solid rgba(128, 128, 128, 0.338);
+          border-radius: 5px;
+          margin: 10px 10px;
+          padding: 5px;
+          background-color: #ffffff;
+          color: gray;
+          cursor: pointer;
+
+          &:hover {
+            border: 0.2px solid $color-2;
+            background-color: #408ecd50;
+          }
+        }
+
+        select {
+          text-decoration: none;
+          display: block;
+          width: 88%;
+          padding: 5px;
+          text-align: center;
+          border: 0.2px solid rgba(128, 128, 128, 0.338);
+          border-radius: 5px;
+          margin: 15px;
+          background-color: #ffffff;
+          color: gray;
+          cursor: pointer;
+        }
+
+        input {
+          width: 90%;
+          font-size: 11px;
+          padding: 5px 5px;
+          padding-left: 10px;
+          border: none;
+          display: block;
+          margin: 5px auto;
+          border: 0.2px solid rgba(128, 128, 128, 0.2);
+
+          &::placeholder {
+            vertical-align: middle;
+          }
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        button {
+          text-decoration: none;
+          display: block;
+          width: 90%;
+          padding: 5px;
+          text-align: center;
+          border: 0.2px solid rgba(128, 128, 128, 0.338);
+          border-radius: 5px;
+          margin: 15px;
+          background-color: #ffffff;
+          color: gray;
+          cursor: pointer;
+
+          &:hover {
+            border: 0.2px solid $color-2;
+            background-color: #408ecd50;
+            color: $color-2;
+          }
+        }
+
+        .saveParagraph {
+          border: none;
+          color: black;
+          background: #fafafa;
+          font-size: 14px;
+          padding: 0;
+          text-align: center;
+
+          &:hover {
+            border: none;
+            background-color: initial;
+            color: initial;
+            cursor: initial;
+          }
+
+          span {
+            font-weight: 700;
+          }
+        }
+
+        .filterSelected {
+          border: 0.2px solid $color-2;
+          background-color: #408ecd50;
+          color: $color-2;
+        }
+      }
+
+      .initiales-actif {
+        background: #fafafa;
+        opacity: 1;
+        visibility: visible;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        button {
+          text-decoration: none;
+          padding: 5px;
+          text-align: center;
+          border: 0.2px solid rgba(128, 128, 128, 0.338);
+          border-radius: 5px;
+          background-color: #ffffff;
+          color: gray;
+          width: 86px;
+          margin: 5px 10px;
+          cursor: pointer;
+
+          &:hover {
+            border: 0.2px solid $color-2;
+            background-color: #408ecd50;
+          }
+        }
+
+        .filterSelected {
+          border: 0.2px solid $color-2;
+          background-color: #408ecd50;
+          color: $color-2;
+        }
+      }
+    }
+    .selectTitleOpen {
+      background-color: $color-2;
+      color: white;
+
+      span {
+        color: #ffffff;
+      }
+
+      svg {
+        color: white;
+      }
+    }
+  }
+  .listShows {
+    flex: 2.5;
+
+    .mainTitle {
+      padding: 0 7px;
+      min-height: 24px;
+      border: 1px solid #c1e1fa;
+      background-color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 26px;
+      display: flex;
+      justify-content: space-between;
+      margin: 5px 5px 15px 3px;
+
+      h1 {
+        color: $color-2;
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .sortingButton {
+        position: relative;
+
+        .currentTri {
+          text-transform: none;
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 16px;
+          width: 100%;
+          white-space: nowrap;
+          cursor: pointer;
+        }
+
+        .toggleTri {
+          width: auto;
+          right: -12px;
+          position: absolute;
+          top: -5px;
+          left: unset;
+          margin: 5px;
+          display: none;
+          z-index: 100;
+          border: 1px solid #fff;
+          border-radius: 2px;
+          background: #fff;
+          filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.16));
+
+          button {
+            cursor: pointer;
+            display: block;
+            text-transform: none;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 16px;
+            white-space: nowrap;
+            color: #000;
+            transition: color 0.2s ease;
+            text-decoration: none;
+            border: 0;
+            background: 0;
+            background-clip: padding-box;
+            font-family: inherit;
+            padding: 8px 15px;
+          }
+        }
+
+        .toggleTriActive {
+          display: block;
+
+          button:hover {
+            color: $color-2;
+          }
+        }
+      }
+    }
+  }
 }

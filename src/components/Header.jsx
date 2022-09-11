@@ -17,6 +17,40 @@ const Header = () => {
   const [searchResultMovie, setSearchResultMovie] = useState([]);
   const [nbpp, setNbpp] = useState(5);
   const ref = useRef(null);
+  const safeDocument = typeof document !== "undefined" ? document : {};
+  const scrollBlocked = useRef();
+  const html = safeDocument.documentElement;
+  const { body } = safeDocument;
+
+  const blockScroll = () => {
+    if (!body || !body.style || scrollBlocked.current) return;
+
+    const scrollBarWidth = window.innerWidth - html.clientWidth;
+    const bodyPaddingRight =
+      parseInt(
+        window.getComputedStyle(body).getPropertyValue("padding-right")
+      ) || 0;
+
+    html.style.position = "relative"; /* [1] */
+    html.style.overflow = "hidden"; /* [2] */
+    body.style.position = "relative"; /* [1] */
+    body.style.overflow = "hidden"; /* [2] */
+    body.style.paddingRight = `${bodyPaddingRight + scrollBarWidth}px`;
+
+    scrollBlocked.current = true;
+  };
+
+  const allowScroll = () => {
+    if (!body || !body.style || !scrollBlocked.current) return;
+
+    html.style.position = "";
+    html.style.overflow = "";
+    body.style.position = "";
+    body.style.overflow = "";
+    body.style.paddingRight = "";
+
+    scrollBlocked.current = false;
+  };
 
   const token = localStorage.getItem("token");
   let config = {
@@ -51,11 +85,13 @@ const Header = () => {
   async function handleFocusOnSearch() {
     await setSearch(!search);
     ref.current.focus();
+    blockScroll();
   }
 
   const handleSearchClose = () => {
     setSearch(!search);
     setSearchInput("");
+    allowScroll();
   };
 
   return (
@@ -104,7 +140,7 @@ const Header = () => {
                   <NavLink
                     to="/"
                     className={(nav) =>
-                      nav.isActive ? "nav-active" : "nav-inactive"
+                      nav.isActive ? `nav nav-active` : "nav"
                     }
                   >
                     <li>
@@ -121,7 +157,7 @@ const Header = () => {
                     <NavLink
                       to="/shows"
                       className={(nav) =>
-                        nav.isActive ? "nav-active" : "nav-inactive"
+                        nav.isActive ? `nav nav-active` : "nav"
                       }
                     >
                       <li>
@@ -135,17 +171,37 @@ const Header = () => {
                       </li>
                     </NavLink>
                     <div className="dropdown-content">
-                      <NavLink to="/shows">Toutes les séries</NavLink>
-                      <NavLink to="/my-shows">Mes séries</NavLink>
-                      <NavLink to="/episodes">Episodes à voir</NavLink>
-                      <NavLink to="/planning">Planning des sorties</NavLink>
+                      <NavLink
+                        to="/shows"
+                        className={(nav) => (nav.isActive ? "navDropdown" : "")}
+                      >
+                        Toutes les séries
+                      </NavLink>
+                      <NavLink
+                        to="/my-shows"
+                        className={(nav) => (nav.isActive ? "navDropdown" : "")}
+                      >
+                        Mes séries
+                      </NavLink>
+                      <NavLink
+                        to="/episodes"
+                        className={(nav) => (nav.isActive ? "navDropdown" : "")}
+                      >
+                        Episodes à voir
+                      </NavLink>
+                      <NavLink
+                        to="/planning"
+                        className={(nav) => (nav.isActive ? "navDropdown" : "")}
+                      >
+                        Planning des sorties
+                      </NavLink>
                     </div>
                   </div>
                   <div className="navbar-dropdown">
                     <NavLink
                       to="/movies"
                       className={(nav) =>
-                        nav.isActive ? "nav-active" : "nav-inactive"
+                        nav.isActive ? `nav nav-active` : "nav"
                       }
                     >
                       <li>
@@ -159,8 +215,18 @@ const Header = () => {
                       </li>
                     </NavLink>
                     <div className="dropdown-content">
-                      <NavLink to="/movies">Tous les films</NavLink>
-                      <NavLink to="/my-movies">Mes films</NavLink>
+                      <NavLink
+                        to="/movies"
+                        className={(nav) => (nav.isActive ? "navDropdown" : "")}
+                      >
+                        Tous les films
+                      </NavLink>
+                      <NavLink
+                        to="/my-movies"
+                        className={(nav) => (nav.isActive ? "navDropdown" : "")}
+                      >
+                        Mes films
+                      </NavLink>
                     </div>
                   </div>
                 </div>

@@ -1,19 +1,25 @@
 @font-face {
   font-family: "font-1";
-  src: url(../assets/fonts/Dongle-Regular.ttf);
+  src: url(../assets/fonts/Muli.ttf);
 }
 @font-face {
   font-family: "font-2";
-  src: url(../assets/fonts/Dongle-Light.ttf);
+  src: url(../assets/fonts/Muli-Light.ttf);
+}
+
+@font-face {
+  font-family: "title";
+  src: url(../assets/fonts/Helvetica-regular.ttf);
 }
 
 $font-1: "font-1", sans-serif;
 $font-2: "font-2", sans-serif;
+$title: "title", sans-serif;
 
-$color-1: rgb(238, 238, 238);
+$color-1: #f2f3f6;
 $color-2: #3b8dd0;
 $color-3: rgb(19, 101, 168);
-$black: #666666;
+$black: #4d5c5a;
 $white: rgb(238, 238, 238);
 $gray: #b6b8ba;
 $focus: #ecf6fd;
@@ -25,8 +31,13 @@ $focus: #ecf6fd;
   font-family: $font-1;
 }
 
+h1 {
+  font-family: $title;
+  letter-spacing: 1px;
+}
+
 body {
-  background: $color-1;
+  background: #f2f3f6;
   color: $black;
 }
 li {
